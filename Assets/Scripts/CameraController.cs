@@ -27,12 +27,12 @@ public class CameraController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.DownArrow))
         {
             cam.orthographicSize = 3.5f;
-            transform.position = new Vector3((transform.position.x + distanceToMove) - 3, transform.position.y - 2, transform.position.z);
+            transform.position = new Vector3((transform.position.x + distanceToMove) - 3, transform.position.y, transform.position.z);
         }
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
             cam.orthographicSize = 5.0f;
-            transform.position = new Vector3((transform.position.x + distanceToMove) + 3, transform.position.y + 2, transform.position.z);
+            transform.position = new Vector3((transform.position.x + distanceToMove) + 3, transform.position.y, transform.position.z);
         }
     }
 }
