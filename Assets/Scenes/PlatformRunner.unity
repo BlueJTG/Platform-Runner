@@ -1024,6 +1024,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c42172f6d4fbc0b46bcdd6d295ea5f89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &455321215 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7197878482242230230, guid: fbe576cdbe999f84dbaf63552f10c541,
+    type: 3}
+  m_PrefabInstance: {fileID: 7197878481519646672}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44e259b222f9d0d438025b68cb556cdb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &475680644
 GameObject:
   m_ObjectHideFlags: 0
@@ -4662,6 +4674,11 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 7197878482242230228, guid: fbe576cdbe999f84dbaf63552f10c541,
+        type: 3}
+      propertyPath: orthographic size
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 7197878482242230229, guid: fbe576cdbe999f84dbaf63552f10c541,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -4717,6 +4734,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7197878482242230229, guid: fbe576cdbe999f84dbaf63552f10c541,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7197878482242230229, guid: fbe576cdbe999f84dbaf63552f10c541,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7197878482242230230, guid: fbe576cdbe999f84dbaf63552f10c541,
         type: 3}
       propertyPath: myPlayer
@@ -4739,7 +4766,7 @@ PrefabInstance:
     - target: {fileID: 8812309081667753944, guid: 8dd95587cd7ddb4408afbb7d57de6e60,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.29
+      value: -6.97
       objectReference: {fileID: 0}
     - target: {fileID: 8812309081667753944, guid: 8dd95587cd7ddb4408afbb7d57de6e60,
         type: 3}
@@ -4791,11 +4818,21 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8812309081667753944, guid: 8dd95587cd7ddb4408afbb7d57de6e60,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8812309081667753945, guid: 8dd95587cd7ddb4408afbb7d57de6e60,
         type: 3}
       propertyPath: restart
       value: 
       objectReference: {fileID: 1470112406}
+    - target: {fileID: 8812309081667753945, guid: 8dd95587cd7ddb4408afbb7d57de6e60,
+        type: 3}
+      propertyPath: zoomCam
+      value: 
+      objectReference: {fileID: 455321215}
     - target: {fileID: 8812309081667753948, guid: 8dd95587cd7ddb4408afbb7d57de6e60,
         type: 3}
       propertyPath: m_Name
