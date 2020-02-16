@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class RestartController : MonoBehaviour
 {
-    //public Transform platform;
     public Vector3 startPosition;
 
     public PlayerController myPlayer;
@@ -13,8 +12,8 @@ public class RestartController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        //startPosition = platform.position;
         playerStart = myPlayer.transform.position;
+        //myAnimator = GetComponent<Animator>();
     }
 
     public void Restart()
@@ -24,8 +23,7 @@ public class RestartController : MonoBehaviour
 
     public IEnumerator RestartGame()
     {
-        myPlayer.gameObject.SetActive(false);
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(1.05f);
         myPlayer.transform.position = playerStart;
         myPlayer.gameObject.SetActive(true);
     }

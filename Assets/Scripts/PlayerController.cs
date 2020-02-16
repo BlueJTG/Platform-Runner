@@ -7,13 +7,16 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float jumpForce;
     public bool grounded;
+    public bool death;
     public LayerMask whatIsGround;
-
+    private CameraController cam;
     private Rigidbody2D myRigidbody;
     private Collider2D myCollider;
     private Animator myAnimator;
     private GameObject myShrink;
     public RestartController restart;
+    public WaitForSeconds await;
+    private GameObject cameraStop;
 
     // Start is called before the first frame update
     void Start()
@@ -22,6 +25,8 @@ public class PlayerController : MonoBehaviour
         myCollider = GetComponent<Collider2D>();
         myAnimator = GetComponent<Animator>();
         myShrink = GameObject.Find("Player");
+        cam = GetComponent<CameraController>();
+        cameraStop = GameObject.Find("CameraStop");
     }
 
     // Update is called once per frame
@@ -44,11 +49,14 @@ public class PlayerController : MonoBehaviour
             //zoomCam.gameObject = 
             myShrink.gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             jumpForce -= 5;
+            Debug.Log("Shrink Successful");
+
         }
         if (Input.GetKeyUp(KeyCode.DownArrow))
         {
             myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
             jumpForce = 17;
+            Debug.Log("Unshrunk Successful");
         }
     }
 
@@ -56,9 +64,29 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "death")
         {
+            //cam.enabled = !cam.enabled;
+            myAnimator.SetTrigger("Death");
             restart.Restart();
             myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
             jumpForce = 17;
+            Debug.Log("Death Successful");
+        }
+        if (collision.gameObject.tag == "deathup" && myShrink == enabled)
+        {
+            myAnimator.SetTrigger("Death");
+            restart.Restart();
+            myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
+            jumpForce = 17;
+            Debug.Log("Death While Shrunk Successful");
+        }
+        if (collision.gameObject.tag == "enemydeath")
+        {
+            //cam.enabled = !cam.enabled;
+            myAnimator.SetTrigger("Death");
+            restart.Restart();
+            myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
+            jumpForce = 17;
+            Debug.Log("Death by Enemy Successful");
         }
     }
 }
