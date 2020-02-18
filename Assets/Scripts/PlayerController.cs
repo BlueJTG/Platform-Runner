@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     private GameObject myShrink;
     public RestartController restart;
     public WaitForSeconds await;
+    public AudioSource shrinkSound;
+    public AudioSource deathSound;
     private GameObject cameraStop;
 
     // Start is called before the first frame update
@@ -49,6 +51,7 @@ public class PlayerController : MonoBehaviour
             //zoomCam.gameObject = 
             myShrink.gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
             jumpForce = 9;
+            shrinkSound.Play();
             Debug.Log("Shrink Successful");
 
         }
@@ -69,6 +72,7 @@ public class PlayerController : MonoBehaviour
             restart.Restart();
             myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
             jumpForce = 17;
+            deathSound.Play();
             Debug.Log("Death Successful");
         }
         if (collision.gameObject.tag == "deathup" && myShrink == enabled)
@@ -77,6 +81,7 @@ public class PlayerController : MonoBehaviour
             restart.Restart();
             myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
             jumpForce = 17;
+            deathSound.Play();
             Debug.Log("Death While Shrunk Successful");
         }
         if (collision.gameObject.tag == "enemydeath")
@@ -86,6 +91,7 @@ public class PlayerController : MonoBehaviour
             restart.Restart();
             myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
             jumpForce = 17;
+            deathSound.Play();
             Debug.Log("Death by Enemy Successful");
         }
         if (collision.gameObject.tag == "portal")
