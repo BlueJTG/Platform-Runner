@@ -17,7 +17,10 @@ public class PlayerController : MonoBehaviour
     public RestartController restart;
     public WaitForSeconds await;
     public AudioSource shrinkSound;
+    public AudioSource unshrinkSound;
     public AudioSource deathSound;
+    public AudioSource jumpSound;
+    public AudioSource theme;
     private GameObject cameraStop;
 
     // Start is called before the first frame update
@@ -38,6 +41,7 @@ public class PlayerController : MonoBehaviour
         myRigidbody.velocity = new Vector2(moveSpeed, myRigidbody.velocity.y);
         if (Input.GetKeyDown(KeyCode.Space) || Input.GetMouseButtonDown(0))
         {
+            jumpSound.Play();
             if (grounded)
             {
                 myRigidbody.velocity = new Vector2(myRigidbody.velocity.x, jumpForce);
@@ -59,6 +63,7 @@ public class PlayerController : MonoBehaviour
         {
             myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
             jumpForce = 17;
+            unshrinkSound.Play();
             Debug.Log("Unshrunk Successful");
         }
     }
@@ -73,6 +78,7 @@ public class PlayerController : MonoBehaviour
             myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
             jumpForce = 17;
             deathSound.Play();
+            theme.PlayDelayed(1.25f);
             Debug.Log("Death Successful");
         }
         if (collision.gameObject.tag == "deathup" && myShrink == enabled)
@@ -82,6 +88,7 @@ public class PlayerController : MonoBehaviour
             myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
             jumpForce = 17;
             deathSound.Play();
+            theme.PlayDelayed(1.25f);
             Debug.Log("Death While Shrunk Successful");
         }
         if (collision.gameObject.tag == "enemydeath")
@@ -92,6 +99,7 @@ public class PlayerController : MonoBehaviour
             myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
             jumpForce = 17;
             deathSound.Play();
+            theme.PlayDelayed(1.25f);
             Debug.Log("Death by Enemy Successful");
         }
         if (collision.gameObject.tag == "portal")
@@ -99,6 +107,7 @@ public class PlayerController : MonoBehaviour
             Destroy(myShrink);
             myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
             jumpForce = 17;
+            theme.Stop();
             Debug.Log("Game Finished");
         }
     }
