@@ -48,7 +48,7 @@ public class PlayerController : MonoBehaviour
         {
             //zoomCam.gameObject = 
             myShrink.gameObject.transform.localScale = new Vector3(0.3f, 0.3f, 0.3f);
-            jumpForce -= 5;
+            jumpForce = 9;
             Debug.Log("Shrink Successful");
 
         }
