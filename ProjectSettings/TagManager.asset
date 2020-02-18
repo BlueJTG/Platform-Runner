@@ -7,6 +7,7 @@ TagManager:
   - death
   - deathup
   - enemydeath
+  - portal
   layers:
   - Default
   - TransparentFX

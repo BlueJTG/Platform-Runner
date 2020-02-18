@@ -88,5 +88,12 @@ public class PlayerController : MonoBehaviour
             jumpForce = 17;
             Debug.Log("Death by Enemy Successful");
         }
+        if (collision.gameObject.tag == "portal")
+        {
+            Destroy(myShrink);
+            myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
+            jumpForce = 17;
+            Debug.Log("Game Finished");
+        }
     }
 }
