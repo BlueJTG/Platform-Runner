@@ -10,7 +10,7 @@ public class CameraShakeController : MonoBehaviour
     private Vector3 playerPosition;
     private float distanceToMove;
     public Camera mainCam;
-    float shakeAmount = 0;
+    private float shakeAmount;
 
     private void Start()
     {
@@ -19,12 +19,16 @@ public class CameraShakeController : MonoBehaviour
             mainCam = Camera.main;
     }
 
-    private void Update()
+    void Update()
     {
         myPlayer = FindObjectOfType<PlayerController>();
         playerPosition = myPlayer.transform.position;
-    }
 
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            ShakeCam(.5f, 3f);
+        }
+    }
     public void ShakeCam(float amt, float duration)
     {
         shakeAmount = amt;
@@ -37,16 +41,15 @@ public class CameraShakeController : MonoBehaviour
         if (shakeAmount > 0)
         {
             Vector3 initialPos = myPlayer.transform.position;
-            float shakeAmtX = Random.Range(-1f, 1.05f) * shakeAmount;
-            float shakeAmtY = Random.Range(-1f, 1.05f) * shakeAmount;
-            float shakeAmtZ = Random.Range(-1f, 1.05f) * shakeAmount;
-            //float shakeAmtX = Random.value * shakeAmount * 1.5f - shakeAmount;
-            //float shakeAmtY = Random.value * shakeAmount * 1.5f - shakeAmount;
-            //float shakeAmtZ = Random.value * shakeAmount * 1.5f - shakeAmount;
+            //float shakeAmtX = Random.Range(-1f, 1f) * shakeAmount;
+            //float shakeAmtY = Random.Range(-1f, 1f) * shakeAmount;
+            //float shakeAmtZ = Random.Range(-1f, 1f) * shakeAmount;
+            float shakeAmtX = Random.value * shakeAmount * 2.0f - shakeAmount;
+            float shakeAmtY = Random.value * shakeAmount * 2.0f - shakeAmount;
+            float shakeAmtZ = Random.value * shakeAmount * 2.0f - shakeAmount;
             initialPos.x -= shakeAmtX;
             initialPos.y -= shakeAmtY;
             initialPos.z = shakeAmtZ;
-
 
             myPlayer.transform.position = initialPos;
 
@@ -61,4 +64,3 @@ public class CameraShakeController : MonoBehaviour
         playerPosition = myPlayer.transform.position;
     }
 }
-   

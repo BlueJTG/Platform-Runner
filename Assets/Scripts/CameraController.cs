@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
+    public static CameraController camControl;
+
     public PlayerController myPlayer;
     private Vector3 playerPosition;
     private float distanceToMove;
