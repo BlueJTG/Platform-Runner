@@ -10,14 +10,13 @@ public class RestartController : MonoBehaviour
     private Vector3 playerStart;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         playerStart = myPlayer.transform.position;
-        //myAnimator = GetComponent<Animator>();
     }
 
     public void Restart()
-    {        
+    {     
         StartCoroutine("RestartGame");
     }
 

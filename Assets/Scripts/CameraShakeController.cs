@@ -4,14 +4,17 @@ using UnityEngine;
 
 public class CameraShakeController : MonoBehaviour
 {
+    public static CameraShakeController shakeInstance;
+
     public PlayerController myPlayer;
     private Vector3 playerPosition;
     private float distanceToMove;
     public Camera mainCam;
-    float shakeAmt = 0;
+    float shakeAmount = 0;
 
     private void Start()
     {
+        shakeInstance = this;
         if (mainCam == null)
             mainCam = Camera.main;
     }
@@ -23,25 +26,25 @@ public class CameraShakeController : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.T))
         {
-            ShakeCam(0.2f, 0.2f);
+            ShakeCam(0.2f, 0.1f);
         }
     }
 
     public void ShakeCam(float amt, float duration)
     {
-        shakeAmt = amt;
+        shakeAmount = amt;
         InvokeRepeating("BeginShake", 0, 0.01f);
         Invoke("StopShake", duration);
     }
 
     public void BeginShake()
     {
-        if (shakeAmt > 0)
+        if (shakeAmount > 0)
         {
             Vector3 initialPos = myPlayer.transform.position;
-            float shakeAmtX = Random.value * shakeAmt * 2 - shakeAmt;
-            float shakeAmtY = Random.value * shakeAmt * 2 - shakeAmt;
-            float shakeAmtZ = Random.value * shakeAmt * 2 - shakeAmt;
+            float shakeAmtX = Random.value * shakeAmount * 2 - shakeAmount;
+            float shakeAmtY = Random.value * shakeAmount * 2 - shakeAmount;
+            float shakeAmtZ = Random.value * shakeAmount * 2 - shakeAmount;
             initialPos.x -= shakeAmtX;
             initialPos.y -= shakeAmtY;
             initialPos.z = shakeAmtZ;

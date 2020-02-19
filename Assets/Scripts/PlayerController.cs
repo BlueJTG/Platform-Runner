@@ -18,9 +18,8 @@ public class PlayerController : MonoBehaviour
     public WaitForSeconds await;
 
     //Shake Cam
-    public float shakeAmt = 0.2f;
-    public float shakeLength = 0.2f;
-    private CameraShakeController camShake;
+    public float shakeAmount = 0.2f;
+    public float shakeLength = 0.15f;
 
     //Audio
     public AudioSource shrinkSound;
@@ -36,10 +35,6 @@ public class PlayerController : MonoBehaviour
         myCollider = GetComponent<Collider2D>();
         myAnimator = GetComponent<Animator>();
         myShrink = GameObject.Find("Player");
-
-        camShake = GetComponent<CameraShakeController>();
-        if (camShake == null)
-            Debug.LogError("CamShake script not found on object");
     }
 
     // Update is called once per frame
@@ -81,6 +76,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "death")
         {
             myAnimator.SetTrigger("Death");
+            CameraShakeController.shakeInstance.ShakeCam(shakeAmount, shakeLength);
             restart.Restart();
             myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
             jumpForce = 17;
@@ -91,6 +87,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "deathup" && myShrink == enabled)
         {
             myAnimator.SetTrigger("Death");
+            CameraShakeController.shakeInstance.ShakeCam(shakeAmount, shakeLength);
             restart.Restart();
             myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
             jumpForce = 17;
@@ -100,8 +97,9 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "enemydeath")
         {
-            myAnimator.SetTrigger("Death");
+            CameraShakeController.shakeInstance.ShakeCam(shakeAmount, shakeLength);
             restart.Restart();
+            myAnimator.SetTrigger("Death");
             myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
             jumpForce = 17;
             deathSound.Play();
