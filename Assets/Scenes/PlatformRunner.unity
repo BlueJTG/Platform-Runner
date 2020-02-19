@@ -6050,8 +6050,8 @@ EdgeCollider2D:
   m_Offset: {x: 0, y: 0}
   m_EdgeRadius: 0
   m_Points:
-  - {x: -1.8827302, y: -0.8123379}
-  - {x: -2.731354, y: -2.8856018}
+  - {x: -1.8827302, y: -0.8019955}
+  - {x: -1.8853525, y: -2.9683387}
 --- !u!1 &571625530
 GameObject:
   m_ObjectHideFlags: 0
@@ -6377,7 +6377,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 649273069}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -13.27, y: -2.17, z: 1226.0739}
+  m_LocalPosition: {x: -13.27, y: -1.95, z: 1226.0739}
   m_LocalScale: {x: -0.4005, y: 0.3887866, z: 1}
   m_Children: []
   m_Father: {fileID: 198978458}
@@ -14335,7 +14335,7 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: -2.2085083, y: -0.80663145}
-  - {x: -2.2351995, y: -2.7963152}
+  - {x: -2.2003105, y: -2.7652886}
 --- !u!1 &1654968003
 GameObject:
   m_ObjectHideFlags: 0
@@ -15845,49 +15845,6 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!1 &1805167685
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1805167686}
-  - component: {fileID: 1805167687}
-  m_Layer: 0
-  m_Name: cm
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1805167686
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1805167685}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1024573445}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1805167687
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1805167685}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac0b09e7857660247b1477e93731de29, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1816149460
 GameObject:
   m_ObjectHideFlags: 0
@@ -17611,7 +17568,7 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: -2.2335582, y: -0.6761722}
-  - {x: -2.4373765, y: -2.894971}
+  - {x: -2.2356033, y: -2.8668227}
 --- !u!1 &2021189331
 GameObject:
   m_ObjectHideFlags: 0
@@ -18997,7 +18954,7 @@ PrefabInstance:
     - target: {fileID: 8812309081667753944, guid: 8dd95587cd7ddb4408afbb7d57de6e60,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.68
+      value: -2.45
       objectReference: {fileID: 0}
     - target: {fileID: 8812309081667753944, guid: 8dd95587cd7ddb4408afbb7d57de6e60,
         type: 3}
@@ -19062,7 +19019,7 @@ PrefabInstance:
     - target: {fileID: 8812309081667753945, guid: 8dd95587cd7ddb4408afbb7d57de6e60,
         type: 3}
       propertyPath: moveSpeed
-      value: 7
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 8812309081667753945, guid: 8dd95587cd7ddb4408afbb7d57de6e60,
         type: 3}
@@ -19112,7 +19069,7 @@ PrefabInstance:
     - target: {fileID: 8812309081667753945, guid: 8dd95587cd7ddb4408afbb7d57de6e60,
         type: 3}
       propertyPath: shakeAmount
-      value: 0.1
+      value: 0.2
       objectReference: {fileID: 0}
     - target: {fileID: 8812309081667753945, guid: 8dd95587cd7ddb4408afbb7d57de6e60,
         type: 3}

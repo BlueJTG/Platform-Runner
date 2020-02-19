@@ -23,11 +23,6 @@ public class CameraShakeController : MonoBehaviour
     {
         myPlayer = FindObjectOfType<PlayerController>();
         playerPosition = myPlayer.transform.position;
-
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            ShakeCam(0.2f, 0.1f);
-        }
     }
 
     public void ShakeCam(float amt, float duration)
@@ -42,9 +37,12 @@ public class CameraShakeController : MonoBehaviour
         if (shakeAmount > 0)
         {
             Vector3 initialPos = myPlayer.transform.position;
-            float shakeAmtX = Random.value * shakeAmount * 2 - shakeAmount;
-            float shakeAmtY = Random.value * shakeAmount * 2 - shakeAmount;
-            float shakeAmtZ = Random.value * shakeAmount * 2 - shakeAmount;
+            float shakeAmtX = Random.Range(-1f, 1.05f) * shakeAmount;
+            float shakeAmtY = Random.Range(-1f, 1.05f) * shakeAmount;
+            float shakeAmtZ = Random.Range(-1f, 1.05f) * shakeAmount;
+            //float shakeAmtX = Random.value * shakeAmount * 1.5f - shakeAmount;
+            //float shakeAmtY = Random.value * shakeAmount * 1.5f - shakeAmount;
+            //float shakeAmtZ = Random.value * shakeAmount * 1.5f - shakeAmount;
             initialPos.x -= shakeAmtX;
             initialPos.y -= shakeAmtY;
             initialPos.z = shakeAmtZ;

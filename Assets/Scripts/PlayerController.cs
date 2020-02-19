@@ -18,8 +18,8 @@ public class PlayerController : MonoBehaviour
     public WaitForSeconds await;
 
     //Shake Cam
-    public float shakeAmount = 0.2f;
-    public float shakeLength = 0.15f;
+    public float shakeAmount = 0.01f;
+    public float shakeLength = 1.05f;
 
     //Audio
     public AudioSource shrinkSound;
