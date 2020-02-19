@@ -4,39 +4,60 @@ using UnityEngine;
 
 public class CameraShakeController : MonoBehaviour
 {
-    public float cameraShake = 0.7f;
-    public float cameraDuration = 1.0f;
-    public Transform camera;
     public PlayerController myPlayer;
-    public float slowDownAmt = 1.0f;
-    public bool shakeEnabled = false;
+    private Vector3 playerPosition;
+    private float distanceToMove;
+    public Camera mainCam;
+    float shakeAmt = 0;
 
-    Vector3 startPos;
-    float initialDuration;
-
-    void Start()
+    private void Start()
     {
-        //camera = Camera.main.transform;
-        startPos = camera.localPosition;
-        initialDuration = cameraDuration;
+        if (mainCam == null)
+            mainCam = Camera.main;
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void Update()
     {
-        if (collision.gameObject.tag == "death")
+        myPlayer = FindObjectOfType<PlayerController>();
+        playerPosition = myPlayer.transform.position;
+
+        if (Input.GetKeyDown(KeyCode.T))
         {
-            if(cameraDuration > 0)
-            {
-                shakeEnabled = true;
-                myPlayer.transform.position = startPos + Random.insideUnitSphere * cameraShake;
-                cameraDuration -= Time.deltaTime * slowDownAmt;
-            }
-            else
-            {
-                shakeEnabled = false;
-                cameraDuration = initialDuration;
-                camera.localPosition = startPos;
-            }
+            ShakeCam(0.2f, 0.2f);
         }
     }
+
+    public void ShakeCam(float amt, float duration)
+    {
+        shakeAmt = amt;
+        InvokeRepeating("BeginShake", 0, 0.01f);
+        Invoke("StopShake", duration);
+    }
+
+    public void BeginShake()
+    {
+        if (shakeAmt > 0)
+        {
+            Vector3 initialPos = myPlayer.transform.position;
+            float shakeAmtX = Random.value * shakeAmt * 2 - shakeAmt;
+            float shakeAmtY = Random.value * shakeAmt * 2 - shakeAmt;
+            float shakeAmtZ = Random.value * shakeAmt * 2 - shakeAmt;
+            initialPos.x -= shakeAmtX;
+            initialPos.y -= shakeAmtY;
+            initialPos.z = shakeAmtZ;
+
+
+            myPlayer.transform.position = initialPos;
+
+        }
+    }
+
+    public void StopShake()
+    {
+        CancelInvoke("BeginShake");
+        distanceToMove = myPlayer.transform.position.x - playerPosition.x;
+        transform.position = new Vector3(transform.position.x + distanceToMove, transform.position.y, transform.position.z);
+        playerPosition = myPlayer.transform.position;
+    }
 }
+   

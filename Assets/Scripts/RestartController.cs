@@ -17,7 +17,7 @@ public class RestartController : MonoBehaviour
     }
 
     public void Restart()
-    {
+    {        
         StartCoroutine("RestartGame");
     }
 
@@ -27,4 +27,6 @@ public class RestartController : MonoBehaviour
         myPlayer.transform.position = playerStart;
         myPlayer.gameObject.SetActive(true);
     }
+
+    
 }

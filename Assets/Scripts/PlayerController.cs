@@ -9,19 +9,25 @@ public class PlayerController : MonoBehaviour
     public bool grounded;
     public bool death;
     public LayerMask whatIsGround;
-    private CameraController cam;
     private Rigidbody2D myRigidbody;
     private Collider2D myCollider;
+
     private Animator myAnimator;
     private GameObject myShrink;
     public RestartController restart;
     public WaitForSeconds await;
+
+    //Shake Cam
+    public float shakeAmt = 0.2f;
+    public float shakeLength = 0.2f;
+    private CameraShakeController camShake;
+
+    //Audio
     public AudioSource shrinkSound;
     public AudioSource unshrinkSound;
     public AudioSource deathSound;
     public AudioSource jumpSound;
     public AudioSource theme;
-    private GameObject cameraStop;
 
     // Start is called before the first frame update
     void Start()
@@ -30,8 +36,10 @@ public class PlayerController : MonoBehaviour
         myCollider = GetComponent<Collider2D>();
         myAnimator = GetComponent<Animator>();
         myShrink = GameObject.Find("Player");
-        cam = GetComponent<CameraController>();
-        cameraStop = GameObject.Find("CameraStop");
+
+        camShake = GetComponent<CameraShakeController>();
+        if (camShake == null)
+            Debug.LogError("CamShake script not found on object");
     }
 
     // Update is called once per frame
@@ -72,7 +80,6 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "death")
         {
-            //cam.enabled = !cam.enabled;
             myAnimator.SetTrigger("Death");
             restart.Restart();
             myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
@@ -93,7 +100,6 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "enemydeath")
         {
-            //cam.enabled = !cam.enabled;
             myAnimator.SetTrigger("Death");
             restart.Restart();
             myShrink.gameObject.transform.localScale = new Vector3(1, 1, 1);
